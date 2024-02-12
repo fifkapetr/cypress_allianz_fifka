@@ -7,10 +7,21 @@ export class LoginPage {
     this.usernameInput = "#username";
     this.passwordInput = "#password";
     this.loginButton = ".btn";
-    this.lostPasswordAnchor = "#forget_password"; // ! toto jsme přidali
+    this.lostPasswordAnchor = "#forget_password";
+    this.pageHeader = "h3.form-title";
+    this.alertDiv = ".alert";
   }
 
-  // ! tuto metodu jsme přidali
+  alertNotExist() {
+    cy.get(this.alertDiv).should("not.exist");
+    return this;
+  }
+
+  pageHeaderHasText(headerText) {
+    cy.get(this.pageHeader).should("have.text", headerText);
+    return this;
+  }
+
   clickLostPassword() {
     cy.get(this.lostPasswordAnchor).click();
     return new LostPasswordPage();
