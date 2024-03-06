@@ -45,4 +45,8 @@ describe("Forms tests", () => {
     cy.fixture("test.txt", { encoding: null }).as("fileToUpload");
     cy.get("input[type='file']").selectFile("@fileToUpload");
   });
+
+  it.only("Type date", () => {
+    cy.get("#datepicker").type("2020-02-01").should("have.value", "2020-02-01");
+  });
 });
