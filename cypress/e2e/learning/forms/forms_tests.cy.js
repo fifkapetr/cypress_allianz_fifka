@@ -46,7 +46,7 @@ describe("Forms tests", () => {
     cy.get("input[type='file']").selectFile("@fileToUpload");
   });
 
-  it.only("Type date", () => {
+  it("Type date", () => {
     cy.get("#datepicker").type("2020-02-01").should("have.value", "2020-02-01");
   });
 });
