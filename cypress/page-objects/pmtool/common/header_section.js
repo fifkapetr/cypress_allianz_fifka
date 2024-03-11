@@ -3,9 +3,9 @@ import { MenuSection } from "./menu_section";
 
 export class HeaderSection extends MenuSection {
   // ! přidání extends
-  constructor() {
+  constructor(path) {
     // ! přidali jsme super()
-    super();
+    super(path);
     this.profileButton = "#user_dropdown";
     this.logoutButton = "#logout";
   }
