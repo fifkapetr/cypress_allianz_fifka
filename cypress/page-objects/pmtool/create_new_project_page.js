@@ -1,3 +1,5 @@
+import { ProjectsTasksPage } from "./projects/projects_tasks_page";
+
 export class CreateNewProjectPage {
   constructor() {
     this.prioritySelect = 'div[data-testid="Priority"] select';
@@ -6,6 +8,7 @@ export class CreateNewProjectPage {
     this.startDateInput = 'div[data-testid="Start Date"] input';
     this.fileUploadInput = 'input[type="file"][data-msg-accept]';
     this.saveButton = "button[type='submit']";
+    this.attachmentFormList = ".attachments-form-list";
   }
 
   selectPriority(priority) {
@@ -33,11 +36,12 @@ export class CreateNewProjectPage {
     cy.get(this.fileUploadInput).selectFile("@projectUploadFile", {
       force: true,
     });
+    cy.get(this.attachmentFormList).should("be.visible");
     return this;
   }
 
   clickSave() {
     cy.get(this.saveButton).click();
-    // TODO: add return new ProjectTasksPage
+    return new ProjectsTasksPage();
   }
 }
