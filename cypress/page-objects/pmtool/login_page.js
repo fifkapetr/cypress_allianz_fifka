@@ -10,10 +10,18 @@ export class LoginPage {
     this.lostPasswordAnchor = "#forget_password";
     this.pageHeader = "h3.form-title";
     this.alertDiv = ".alert";
+    this.logoImg = ".login-page-logo img";
+    this.rememberMeCheckbox = "#uniform-remember_me";
+    this.rememberMeText = ".checkbox";
   }
 
   alertNotExist() {
     cy.get(this.alertDiv).should("not.exist");
+    return this;
+  }
+
+  pageHeaderIsVisible() {
+    cy.get(this.pageHeader).should("be.visible");
     return this;
   }
 
@@ -25,6 +33,16 @@ export class LoginPage {
   clickLostPassword() {
     cy.get(this.lostPasswordAnchor).click();
     return new LostPasswordPage();
+  }
+
+  lostPasswordIsVisible() {
+    cy.get(this.lostPasswordAnchor).should("be.visible");
+    return this;
+  }
+
+  lostPasswordHasText(text) {
+    cy.get(this.lostPasswordAnchor).should("have.text", text);
+    return this;
   }
 
   openPmtool() {
@@ -42,9 +60,24 @@ export class LoginPage {
     return this;
   }
 
+  passwordIsVisible() {
+    cy.get(this.passwordInput).should("be.visible");
+    return this;
+  }
+
+  passwordHasPlaceholder(placeholder) {
+    cy.get(this.passwordInput).should("have.attr", "placeholder", placeholder);
+    return this;
+  }
+
   clickLogin() {
     cy.get(this.loginButton).click();
     return new HomePage();
+  }
+
+  loginButtonIsVisible() {
+    cy.get(this.loginButton).should("be.visible");
+    return this;
   }
 
   usernameIsVisible() {
@@ -58,7 +91,28 @@ export class LoginPage {
   }
 
   usernameHasValue(value) {
-    cy.get(this.usernameHasValue).should("have.value", value);
+    cy.get(this.usernameInput).should("have.value", value);
+    return this;
+  }
+
+  logoIsVisible() {
+    cy.get(this.logoImg).should("be.visible");
+    return this;
+  }
+
+  rememberMeCheckboxIsVisible() {
+    cy.get(this.rememberMeCheckbox).should("be.visible");
+    return this;
+  }
+
+  rememberMeHasText(text) {
+    cy.get(this.rememberMeText).should("contain.text", text);
+    return this;
+  }
+
+  rememberMeIsChecked() {
+    cy.get(this.rememberMeCheckbox).click();
+    cy.get(this.rememberMeCheckbox + " #remember_me").should("be.checked");
     return this;
   }
 }
