@@ -1,5 +1,11 @@
-export class ProjectInfoPage {
-  constructor() {
+import { HeaderSection } from "../common/header_section";
+
+export class ProjectInfoPage extends HeaderSection {
+  /**
+   * @param {string} projectId is used for direct opening project page. If it is used in E2E test, do not fill it.
+   */
+  constructor(projectId = "") {
+    super(`module=items/info&path=21-${projectId}`);
     this.projectTitleDiv = ".portlet-title .caption";
     //alternativní xpath Status: //th[contains(text(), "Status")]//..//td//div
     this.statusDiv = "tr.form-group-157 td div";

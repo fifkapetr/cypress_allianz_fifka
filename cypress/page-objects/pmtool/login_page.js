@@ -47,5 +47,18 @@ export class LoginPage {
     return new HomePage();
   }
 
-  //vytvoř metody: typePassword, clickLogin
+  usernameIsVisible() {
+    cy.get(this.usernameInput).should("be.visible");
+    return this;
+  }
+
+  usernameHasPlaceholder(placeholder) {
+    cy.get(this.usernameInput).should("have.attr", "placeholder", placeholder);
+    return this;
+  }
+
+  usernameHasValue(value) {
+    cy.get(this.usernameHasValue).should("have.value", value);
+    return this;
+  }
 }
