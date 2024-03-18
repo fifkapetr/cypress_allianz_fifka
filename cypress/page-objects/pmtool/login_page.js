@@ -1,11 +1,12 @@
+import { createCustomElement } from "../../helpers/custom_element";
 import { HomePage } from "./home_page";
 import { LostPasswordPage } from "./lost_password_page";
 
 export class LoginPage {
   constructor() {
     this.pmtoolUrl = "https://tredgate.com/pmtool";
-    this.usernameInput = "#username";
-    this.passwordInput = "#password";
+    this.usernameInput = createCustomElement("#username");
+    this.passwordInput = createCustomElement("#password");
     this.loginButton = ".btn";
     this.lostPasswordAnchor = "#forget_password";
     this.pageHeader = "h3.form-title";
@@ -51,22 +52,22 @@ export class LoginPage {
   }
 
   typeUsername(username) {
-    cy.get(this.usernameInput).type(username);
+    this.usernameInput.get().type(username);
     return this;
   }
 
   typePassword(password) {
-    cy.get(this.passwordInput).type(password);
+    this.passwordInput.get().type(password);
     return this;
   }
 
   passwordIsVisible() {
-    cy.get(this.passwordInput).should("be.visible");
+    this.passwordInput.isVisible();
     return this;
   }
 
   passwordHasPlaceholder(placeholder) {
-    cy.get(this.passwordInput).should("have.attr", "placeholder", placeholder);
+    this.passwordInput.hasPlaceholder(placeholder);
     return this;
   }
 
@@ -81,17 +82,17 @@ export class LoginPage {
   }
 
   usernameIsVisible() {
-    cy.get(this.usernameInput).should("be.visible");
+    this.usernameInput.isVisible();
     return this;
   }
 
   usernameHasPlaceholder(placeholder) {
-    cy.get(this.usernameInput).should("have.attr", "placeholder", placeholder);
+    this.usernameInput.hasPlaceholder(placeholder);
     return this;
   }
 
   usernameHasValue(value) {
-    cy.get(this.usernameInput).should("have.value", value);
+    this.usernameInput.hasValue(value);
     return this;
   }
 
