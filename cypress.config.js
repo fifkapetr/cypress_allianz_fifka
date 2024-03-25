@@ -12,7 +12,9 @@ module.exports = defineConfig({
       // implement node event listeners here
     },
     watchForFileChanges: false,
-    defaultCommandTimeout: 5000,
+    defaultCommandTimeout: 10000,
+    requestTimeout: 10000,
+    responseTimeout: 60000,
     baseUrl: "https://tredgate.com/pmtool",
   },
 });
